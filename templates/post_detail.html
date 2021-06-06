@@ -1,0 +1,19 @@
+{% extends 'base.html' %}
+
+{% block head %} {{instance.title}} | {{ block.super }} {% endblock head %}
+
+
+{% block content %}
+<div class="col-sm-6 col-sm-offset-2">
+    <h1>{{ title }} <small>{{ instance.timestamp }} ago</small></h1>
+    {% if instance.user.get_full_name %}
+        <p>Author: {{instance.user.get_full_name}}</p>
+    {% else %}
+        <p>Author: {{instance.user.username}}</p>
+    {% endif %}
+    <img src="{{ instance.image.url }}" class="img img-responsive" style="width: 100%;" />
+
+    <p>{{ instance.content|linebreaks }} </p>
+</div>
+
+{% endblock content %}
